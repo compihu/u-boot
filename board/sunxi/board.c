@@ -575,6 +575,11 @@ void sunxi_board_init(void)
 {
 	int power_failed = 0;
 
+#if defined(CONFIG_MACH_SUN50I_H6)
+ gpio_direction_output(SUNXI_GPL(4), 1);
+ gpio_direction_output(SUNXI_GPL(7), 0);
+#endif
+
 #ifdef CONFIG_LED_STATUS
 	if (IS_ENABLED(CONFIG_SPL_DRIVERS_MISC))
 		status_led_init();
